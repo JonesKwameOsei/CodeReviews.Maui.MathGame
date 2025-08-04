@@ -23,11 +23,9 @@
                HorizontalOptions="Center"/>
       </VerticalStackLayout>
 
-      <!-- Question Area -->
       <VerticalStackLayout x:Name="QuestionArea"
                            Spacing="25">
 
-        <!-- Question Card -->
         <Border BackgroundColor="White"
                 Stroke="#88C0D0"
                 StrokeThickness="3"
@@ -52,7 +50,6 @@
           </VerticalStackLayout>
         </Border>
 
-        <!-- Answer Input Card -->
         <Border BackgroundColor="White"
                 Stroke="#A3BE8C"
                 StrokeThickness="2"
@@ -84,7 +81,6 @@
           </VerticalStackLayout>
         </Border>
 
-        <!-- Submit Button -->
         <Border BackgroundColor="#5E81AC"
                 Stroke="Transparent"
                 Margin="20,10">
@@ -102,7 +98,6 @@
                   Padding="30,18"/>
         </Border>
 
-        <!-- Feedback Card -->
         <Border BackgroundColor="#ECEFF4"
                 Stroke="#D8DEE9"
                 StrokeThickness="1"
@@ -124,12 +119,10 @@
 
       </VerticalStackLayout>
 
-      <!-- Game Over Section -->
       <VerticalStackLayout Spacing="20"
                            x:Name="GameOverSection"
                            IsVisible="False">
 
-        <!-- Results Card -->
         <Border BackgroundColor="White"
                 Stroke="#EBCB8B"
                 StrokeThickness="3"
@@ -154,7 +147,6 @@
           </VerticalStackLayout>
         </Border>
 
-        <!-- Back to Menu Button -->
         <Border BackgroundColor="#A3BE8C"
                 Stroke="Transparent"
                 Margin="20,10">

@@ -6,11 +6,10 @@
 
   <ScrollView>
     <VerticalStackLayout Spacing="40"
-        Padding="30,50,30,30">
+                         Padding="30,50,30,30">
 
-      <!-- Hero Section -->
       <VerticalStackLayout Spacing="15"
-          HorizontalOptions="Center">
+                           HorizontalOptions="Center">
         <Label Text="🧮 Math Master 🧮"
                FontFamily="CaveatBrush"
                FontSize="48"
@@ -25,7 +24,6 @@
                HorizontalOptions="Center"/>
       </VerticalStackLayout>
 
-      <!-- Game Type Selection -->
       <VerticalStackLayout Spacing="25">
         <Label Text="Choose Your Adventure"
                FontFamily="CaveatBrush"
@@ -34,10 +32,9 @@
                HorizontalOptions="Center"
                FontAttributes="Bold"/>
 
-        <!-- Operation Cards Grid -->
         <Grid RowSpacing="20"
-            ColumnSpacing="15"
-            Margin="0,10">
+              ColumnSpacing="15"
+              Margin="0,10">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -47,9 +44,8 @@
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
 
-          <!-- Addition Card -->
           <Border Grid.Row="0"
-              Grid.Column="0"
+                  Grid.Column="0"
                   BackgroundColor="White"
                   Stroke="#88C0D0"
                   StrokeThickness="2">
@@ -58,11 +54,11 @@
             </Border.StrokeShape>
             <Border.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnGameChosen"
-                  CommandParameter="Addition"/>
+                                    CommandParameter="Addition"/>
             </Border.GestureRecognizers>
             <VerticalStackLayout Spacing="8"
-                HorizontalOptions="Center"
-                Padding="20">
+                                 HorizontalOptions="Center"
+                                 Padding="20">
               <Label Text="➕"
                      FontSize="32"
                      TextColor="#88C0D0"
@@ -76,9 +72,8 @@
             </VerticalStackLayout>
           </Border>
 
-          <!-- Subtraction Card -->
           <Border Grid.Row="0"
-              Grid.Column="1"
+                  Grid.Column="1"
                   BackgroundColor="White"
                   Stroke="#BF616A"
                   StrokeThickness="2">
@@ -87,11 +82,11 @@
             </Border.StrokeShape>
             <Border.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnGameChosen"
-                  CommandParameter="Subtraction"/>
+                                    CommandParameter="Subtraction"/>
             </Border.GestureRecognizers>
             <VerticalStackLayout Spacing="8"
-                HorizontalOptions="Center"
-                Padding="20">
+                                 HorizontalOptions="Center"
+                                 Padding="20">
               <Label Text="➖"
                      FontSize="32"
                      TextColor="#BF616A"
@@ -105,9 +100,8 @@
             </VerticalStackLayout>
           </Border>
 
-          <!-- Multiplication Card -->
           <Border Grid.Row="1"
-              Grid.Column="0"
+                  Grid.Column="0"
                   BackgroundColor="White"
                   Stroke="#A3BE8C"
                   StrokeThickness="2">
@@ -116,11 +110,11 @@
             </Border.StrokeShape>
             <Border.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnGameChosen"
-                  CommandParameter="Multiplication"/>
+                                    CommandParameter="Multiplication"/>
             </Border.GestureRecognizers>
             <VerticalStackLayout Spacing="8"
-                HorizontalOptions="Center"
-                Padding="20">
+                                 HorizontalOptions="Center"
+                                 Padding="20">
               <Label Text="✖️"
                      FontSize="32"
                      TextColor="#A3BE8C"
@@ -134,9 +128,8 @@
             </VerticalStackLayout>
           </Border>
 
-          <!-- Division Card -->
           <Border Grid.Row="1"
-              Grid.Column="1"
+                  Grid.Column="1"
                   BackgroundColor="White"
                   Stroke="#EBCB8B"
                   StrokeThickness="2">
@@ -145,11 +138,11 @@
             </Border.StrokeShape>
             <Border.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnGameChosen"
-                  CommandParameter="Division"/>
+                                    CommandParameter="Division"/>
             </Border.GestureRecognizers>
             <VerticalStackLayout Spacing="8"
-                HorizontalOptions="Center"
-                Padding="20">
+                                 HorizontalOptions="Center"
+                                 Padding="20">
               <Label Text="➗"
                      FontSize="32"
                      TextColor="#EBCB8B"
@@ -165,7 +158,6 @@
         </Grid>
       </VerticalStackLayout>
 
-      <!-- History Button -->
       <Border BackgroundColor="#5E81AC"
               Stroke="Transparent"
               Margin="20,30,20,0">

@@ -4,7 +4,6 @@ public partial class GameSetUpPage : ContentPage
 {
   private readonly string? gameType;
 
-  // Constructor that initializes the game type
   public GameSetUpPage(string selectedGameType)
   {
     InitializeComponent();
@@ -12,7 +11,6 @@ public partial class GameSetUpPage : ContentPage
     GameTypeLabel.Text = $"Selected Game Type: {gameType}";
   }
 
-  // A method to start the game with the selected game type
   private void OnStartGameClicked(object sender, EventArgs e)
   {
     if (string.IsNullOrEmpty(gameType))
@@ -31,7 +29,6 @@ public partial class GameSetUpPage : ContentPage
     }
   }
 
-  // Handle quick select buttons for common question counts
   private void OnQuickSelectClicked(object sender, EventArgs e)
   {
     if (sender is Button button)

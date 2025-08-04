@@ -21,27 +21,17 @@ public partial class PreviousGames : ContentPage
     await LoadGameHistoryAsync();
   }
 
-  /// <summary>
-  /// Loads game history from storage and updates the UI
-  /// </summary>
   private async Task LoadGameHistoryAsync()
   {
     try
     {
-      // * Get games from service
       var games = await _gameHistoryService.GetGameHistoryAsync();
-
-      // * Clear and repopulate collection
       GameHistory.Clear();
       foreach (var game in games)
       {
         GameHistory.Add(game);
       }
-
-      // * Update statistics
       await UpdateStatisticsAsync();
-
-      // * Handling empty state
       UpdateEmptyState();
     }
     catch (Exception ex)
@@ -50,10 +40,6 @@ public partial class PreviousGames : ContentPage
     }
   }
 
-
-  /// <summary>
-  /// Updates the statistics labels with current data
-  /// </summary>
   private async Task UpdateStatisticsAsync()
   {
     try
@@ -67,7 +53,6 @@ public partial class PreviousGames : ContentPage
     }
     catch (Exception ex)
     {
-      // Handle statistics error gracefully
       System.Diagnostics.Debug.WriteLine($"Statistics error: {ex.Message}");
       TotalGamesLabel.Text = "Statistics unavailable";
       AverageScoreLabel.Text = "";
@@ -76,21 +61,12 @@ public partial class PreviousGames : ContentPage
     }
   }
 
-  /// <summary>
-  /// Shows/hides empty state message based on game count
-  /// </summary>
   private void UpdateEmptyState()
   {
     bool hasGames = GameHistory.Count > 0;
-
-    // * Show games list and hide empty message when games exist
     EmptyStateLabel.IsVisible = !hasGames;
   }
 
-
-  /// <summary>
-  /// Handles individual game deletion
-  /// </summary>
   private async void OnDeleteGameClicked(object sender, EventArgs e)
   {
     if (sender is Button button && button.CommandParameter is Game gameToDelete)
@@ -106,16 +82,13 @@ public partial class PreviousGames : ContentPage
       {
         try
         {
-          // Remove from collection (UI updates automatically)
           GameHistory.Remove(gameToDelete);
-          
-          // Update the service/storage (you'll need to add this method)
+
           await _gameHistoryService.DeleteGameAsync(gameToDelete.Id);
-          
-          // Update UI state
+
           UpdateEmptyState();
           await UpdateStatisticsAsync();
-          
+
           await DisplayAlert("Success", "Game deleted successfully!", "OK");
         }
         catch (Exception ex)
@@ -126,10 +99,6 @@ public partial class PreviousGames : ContentPage
     }
   }
 
-  /// <summary>
-  /// Refresh the page data
-  /// </summary>
-  /// <returns></returns>
   public async Task RefreshAsync()
   {
     await LoadGameHistoryAsync();

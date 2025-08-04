@@ -7,14 +7,12 @@
   <ScrollView Padding="20">
     <VerticalStackLayout Padding="20">
 
-      <!-- Header Section -->
       <Label
         Text="Game History"
         FontSize="32"
         FontAttributes="Bold"
         HorizontalOptions="Center"/>
 
-      <!-- Statistics Summary Card -->
       <Border BackgroundColor="#E3F2FD"
               Stroke="Transparent"
               StrokeThickness="0">
@@ -39,7 +37,6 @@
         </VerticalStackLayout>
       </Border>
 
-      <!-- Game History List -->
       <Label Text="Recent Games"
              FontSize="20"
              FontAttributes="Bold"/>
@@ -66,7 +63,6 @@
                     <ColumnDefinition Width="Auto"/>
                   </Grid.ColumnDefinitions>
 
-                  <!-- Game Type -->
                   <Label Grid.Row="0"
                          Grid.Column="0"
                          Text="{Binding GameTypeDisplay}"
@@ -74,7 +70,6 @@
                          FontSize="16"
                          TextColor="#212121"/>
 
-                  <!-- Score -->
                   <Label Grid.Row="0"
                          Grid.Column="1"
                          HorizontalOptions="Center"
@@ -89,7 +84,6 @@
                     </Label.FormattedText>
                   </Label>
 
-                  <!-- Percentage -->
                   <Label Grid.Row="0"
                          Grid.Column="2"
                          Grid.RowSpan="2"
@@ -99,7 +93,6 @@
                          FontAttributes="Bold"
                          TextColor="#212121"/>
 
-                  <!-- Delete Button -->
                   <Button Grid.Row="0"
                           Grid.Column="3"
                           Grid.RowSpan="2"
@@ -114,7 +107,6 @@
                           Clicked="OnDeleteGameClicked"
                           CommandParameter="{Binding}"/>
 
-                  <!-- Date -->
                   <Label Grid.Row="1"
                          Grid.ColumnSpan="3"
                          Text="{Binding DatePlayed, StringFormat='Played on {0:MMM dd, yyyy \\a\\t HH:mm}'}"

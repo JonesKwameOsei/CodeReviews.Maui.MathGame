@@ -26,7 +26,6 @@ public partial class GamePage : ContentPage
     CreateNewQuestions();
   }
 
-  // A method to create questions based on the game type
   private void CreateNewQuestions()
   {
     string gameOperand = GameType switch
@@ -38,10 +37,8 @@ public partial class GamePage : ContentPage
       _ => ""
     };
 
-    // Create a random number generator
     Random random = new Random();
 
-    // Generate two random numbers based on the game type
     firstNumber = GameType != "Division" ? random.Next(1, 9) : random.Next(1, 99);
     secondNumber = GameType != "Division" ? random.Next(1, 9) : random.Next(1, 99);
 
@@ -54,14 +51,11 @@ public partial class GamePage : ContentPage
       }
     }
 
-    // Set the question text based on the game type and operand
     QuestionLabel.Text = $"{firstNumber} {gameOperand} {secondNumber}";
   }
 
-  // A method to submit the answer
   private async void OnAnswerSubmitted(object sender, EventArgs eventArgs)
   {
-    // validate input: not empty and is a valid integer (convert input (string) into an integer)
     if (string.IsNullOrWhiteSpace(AnswerEntry.Text) || !int.TryParse(AnswerEntry.Text, out int answer))
     {
       AnswerLabel.Text = "Please enter a valid number.";
@@ -69,7 +63,6 @@ public partial class GamePage : ContentPage
     }
     var isCorrect = false;
 
-    // Check the answer based on the game type use 
     switch (GameType)
     {
       case "Addition":
@@ -90,18 +83,14 @@ public partial class GamePage : ContentPage
     }
     ProcessAnswer(isCorrect);
 
-    // Decrease the number of games left after each question
     gamesLeft--;
 
-    // Clear the answer entry field for the next question
     AnswerEntry.Text = string.Empty;
-    AnswerEntry.Focus(); // Set focus back to the answer entry field
+    AnswerEntry.Focus();
 
-    // Hide feedback card for next question
-    await Task.Delay(1500); // Show feedback for 1.5 seconds
+    await Task.Delay(1500);
     FeedbackCard.IsVisible = false;
 
-    // Check if there are any games left
     if (gamesLeft > 0)
       CreateNewQuestions();
     else
@@ -110,11 +99,9 @@ public partial class GamePage : ContentPage
 
   private async void GameOver()
   {
-    // Hide the question area and show game over section
     QuestionArea.IsVisible = false;
     GameOverSection.IsVisible = true;
 
-    // Calculate percentage and create encouraging message
     double percentage = (double)score / totalQuestions * 100;
     string performanceMessage = percentage switch
     {
@@ -127,7 +114,6 @@ public partial class GamePage : ContentPage
 
     GameOverLabel.Text = $"{performanceMessage}\n\nScore: {score} out of {totalQuestions} ({percentage:F0}%)";
 
-    // * Save game results
     try
     {
       await _gameHistoryService.SaveGameAsync(GameType, score, totalQuestions);
@@ -142,15 +128,13 @@ public partial class GamePage : ContentPage
   {
     score += isCorrect ? 1 : 0;
 
-    // Display the result with improved styling
     AnswerLabel.Text = isCorrect ? "✅ Correct! Great job!" : "❌ Incorrect! Try again next time.";
     AnswerLabel.TextColor = isCorrect ? Color.FromArgb("#A3BE8C") : Color.FromArgb("#BF616A");
 
     // Show the feedback card
     FeedbackCard.IsVisible = true;
 
-    // Auto-scroll to make feedback card visible
-    await Task.Delay(100); // Small delay to ensure card is rendered
+    await Task.Delay(100);
     await MainScrollView.ScrollToAsync(FeedbackCard, ScrollToPosition.MakeVisible, true);
   }
 
@@ -165,7 +149,6 @@ public partial class GamePage : ContentPage
 
     if (confirm)
     {
-      // Return to the main menu by popping to root page
       await Navigation.PopToRootAsync();
     }
   }
@@ -173,7 +156,6 @@ public partial class GamePage : ContentPage
   protected override async void OnAppearing()
   {
     base.OnAppearing();
-    // Fade in the main content area for a smooth transition
     if (QuestionArea != null)
     {
       QuestionArea.Opacity = 0;
@@ -183,7 +165,6 @@ public partial class GamePage : ContentPage
 
   protected override async void OnDisappearing()
   {
-    // Fade out the main content area before navigating away
     if (QuestionArea != null)
     {
       await QuestionArea.FadeTo(0, 200, Easing.CubicOut);
